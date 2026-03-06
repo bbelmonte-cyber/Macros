@@ -864,26 +864,141 @@ input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 input[type="number"] { -moz-appearance: textfield; }
 
-/* FIX: MÓVIL Y TABLET (Se adapta a 1 columna donde debe) */
-@media (max-width: 768px) {
-  .app { padding: 10px; }
-  .selector-grid { grid-template-columns: 1fr; }
-  .desayuno-builder { grid-template-columns: 1fr 1fr; }
-  .activity-grid { grid-template-columns: 1fr 1fr; }
-  .meal-grid { grid-template-columns: 1fr; }
-  .calendar-grid { grid-template-columns: repeat(4, 1fr); }
-  .stat-value { font-size: 1.8rem; }
-  .builder-group.proteina-group { grid-column: 1 / -1; }
-  .proteina-group .checkbox-group { flex-wrap: wrap; }
-  
-  .stats-row { 
-    grid-template-columns: 1fr 1fr; 
-    display: grid; 
-    gap: 10px; 
-    padding: 15px; 
-  }
-  .stat-item { min-width: 0; }
+/* ══════════════════════════════════════════
+   RESPONSIVE — MÓVIL (< 600px) y TABLET (600-1024px)
+══════════════════════════════════════════ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .desayuno-builder { grid-template-columns: repeat(3, 1fr); }
+  .activity-grid    { grid-template-columns: repeat(3, 1fr); }
+  .objetivo-row     { grid-template-columns: 1fr 1fr; }
+  .objetivo-row > div:last-child { grid-column: 1 / -1; }
+  .objetivo-row button { margin-top: 0 !important; }
 }
+
+/* Móvil */
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .app { padding: 8px; }
+
+  /* Header */
+  .header { border-radius: 24px; padding: 16px 12px; }
+  .moon-glyph { font-size: 2rem; }
+  .title { font-size: 1.4rem; }
+  .subtitle { font-size: 0.8rem; letter-spacing: 2px; }
+
+  /* Tabs */
+  .nav { gap: 5px; }
+  .tab { font-size: 0.72rem; padding: 9px 12px; letter-spacing: 0; }
+
+  /* Racha banner */
+  .racha-banner { flex-wrap: wrap; gap: 8px; padding: 10px 14px; border-radius: 16px; }
+  .racha-num { font-size: 1.8rem; }
+  .racha-label { font-size: 0.72rem; }
+  .racha-flame { font-size: 1.4rem; }
+
+  /* Selector section */
+  .selector-section { border-radius: 20px; padding: 14px; }
+  .selector-grid { grid-template-columns: 1fr 1fr; }
+  .selector-grid > .selector-item:last-child { grid-column: 1 / -1; }
+
+  /* Desayuno builder — 2 cols, proteína full width */
+  .desayuno-builder { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .builder-group.proteina-group { grid-column: 1 / -1; }
+  .proteina-group .checkbox-group { flex-direction: row; flex-wrap: wrap; }
+  .builder-group { border-radius: 18px; padding: 12px; }
+  .toggle-pill { font-size: 0.8rem; padding: 7px 10px; }
+
+  /* Comida/cena */
+  .meal-grid { grid-template-columns: 1fr; gap: 10px; }
+  .meal-card { border-radius: 18px; padding: 14px; }
+
+  /* Actividad */
+  .activity-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .activity-item { border-radius: 16px; padding: 10px; }
+  .activity-label { font-size: 0.72rem; }
+
+  /* Stats row */
+  .stats-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 12px; border-radius: 22px; }
+  .stat-item { min-width: 0; }
+  .stat-value { font-size: 1.5rem; }
+  .stat-label { font-size: 0.72rem; }
+
+  /* Tracker day */
+  .tracker-day { border-radius: 22px; padding: 16px; }
+  .day-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .day-title { font-size: 1.2rem; }
+  .day-total { font-size: 1.1rem; }
+
+  /* Objetivo */
+  .objetivo-card { padding: 14px; border-radius: 20px; }
+  .objetivo-row { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .objetivo-row > div:last-child { grid-column: 1 / -1; }
+  .objetivo-row button { margin-top: 0 !important; }
+
+  /* Calendarios */
+  .calendar-grid { grid-template-columns: repeat(4, 1fr); gap: 4px; }
+  .calendar-day { border-radius: 10px; padding: 6px 4px; font-size: 0.75rem; }
+  .calendar-day-number { font-size: 0.9rem; }
+  .calendar-day-deficit { font-size: 0.7rem; }
+  .calendar-weekdays { font-size: 0.75rem; }
+
+  /* Charts */
+  .chart-container { padding: 14px; border-radius: 22px; }
+  .chart-bars { height: 160px; }
+  .chart-bar-value { font-size: 0.8rem; }
+  .chart-bar-label { font-size: 0.7rem; }
+
+  /* Historial tabla */
+  .history-table { font-size: 0.78rem; }
+  .history-table th, .history-table td { padding: 6px 8px; }
+
+  /* Planes import */
+  #tab-planes .selector-grid { grid-template-columns: 1fr; }
+  div[style*="grid-template-columns:1fr 260px"] { grid-template-columns: 1fr !important; }
+
+  /* Semana nav */
+  #weekDisplay, #currentMonthDisplay { font-size: 1rem; }
+
+  /* Botones guardar/reset */
+  .btn { font-size: 0.82rem; padding: 11px 16px; }
+
+  /* Predicción mensual */
+  .prediccion-card { padding: 12px 14px; border-radius: 16px; }
+  .prediccion-text { font-size: 0.85rem; }
+}
+
+/* Mobile XS (< 380px) */
+@media (max-width: 380px) {
+  .tab { font-size: 0.65rem; padding: 8px 8px; }
+  .title { font-size: 1.2rem; }
+  .desayuno-builder { grid-template-columns: 1fr; }
+  .builder-group.proteina-group { grid-column: auto; }
+  .activity-grid { grid-template-columns: 1fr 1fr; }
+  .stats-row { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── Predicción mensual ── */
+.prediccion-card {
+  background: linear-gradient(135deg, rgba(127,201,255,0.08), rgba(180,160,255,0.06));
+  border: 1px solid rgba(127,201,255,0.25);
+  border-radius: 22px;
+  padding: 18px 22px;
+  margin: 18px 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.prediccion-icon { font-size: 2rem; flex-shrink: 0; }
+.prediccion-text {
+  font-family: 'IM Fell English', serif;
+  font-size: 1rem;
+  color: var(--lavender);
+  line-height: 1.6;
+}
+.prediccion-text strong { color: var(--celeste); font-style: normal; }
+.prediccion-text em { color: var(--gold); font-style: normal; }
 
 /* ── Weight trend chart ── */
 .weight-chart-container {
@@ -1227,9 +1342,9 @@ body { }
         <div class="objetivo-eta" id="objetivoEta2">—</div>
       </div>
 
-      <!-- Mini gráfica de peso reciente -->
+      <!-- Gráfica de peso histórica -->
       <div class="peso-diario-chart">
-        <div class="peso-diario-title">★ Evolución de peso reciente</div>
+        <div class="peso-diario-title">★ Evolución de peso · todos los registros</div>
         <div id="pesoDiarioChart"></div>
       </div>
     </div>
@@ -1317,6 +1432,10 @@ body { }
 
     <div class="tracker-day">
       <div class="day-title" style="margin-bottom:20px;">★ Calendario mensual</div>
+      <div class="prediccion-card" id="prediccionMensual">
+        <span class="prediccion-icon">★</span>
+        <div class="prediccion-text" id="prediccionTexto">Cargando predicción...</div>
+      </div>
       <div class="calendar-weekdays">
         <div>L</div><div>M</div><div>X</div><div>J</div><div>V</div><div>S</div><div>D</div>
       </div>
@@ -1563,11 +1682,11 @@ const desayunoBD = {
 
 const datosExcel = {
   // SEMANA 19/01/26 — Plan 2
-  '2026-01-19': {gasto:1831.75, consumo:1823, deficit:-8.75,      plan:2, dia:1, comida:'Pasta con pollo, verduras y queso',      cena:'Fajita completa'},
+  '2026-01-19': {gasto:1831.75, consumo:1823, deficit:-8.75,      plan:2, dia:1, comida:'Pasta con pollo, verduras y queso',      cena:'Fajita completa',                        peso:82.1},
   '2026-01-20': {gasto:2173.76, consumo:1624, deficit:-549.76,    plan:2, dia:2, comida:'Guiso de alubias con verduras',           cena:'Sopa de verduras y pollo'},
   '2026-01-21': {gasto:1750.74, consumo:1498, deficit:-252.74,    plan:2, dia:3, comida:'Pescado blanco con verdura',              cena:'Ensalada de brócoli'},
   '2026-01-22': {gasto:2255.76, consumo:1763, deficit:-492.76,    plan:2, dia:4, comida:'Guiso de alubias (repetición)',           cena:'Sopa de verduras con pollo (rep)'},
-  '2026-01-23': {gasto:2255.76, consumo:1633, deficit:-622.76,    plan:2, dia:5, comida:'Cous cous con verduras y gambas',         cena:'Alitas de pollo + Ensalada tomate'},
+  '2026-01-23': {gasto:2255.76, consumo:1633, deficit:-622.76,    plan:2, dia:5, comida:'Cous cous con verduras y gambas',         cena:'Alitas de pollo + Ensalada tomate',      peso:81.6},
   '2026-01-24': {gasto:2389.00, consumo:2217, deficit:-172.00,    plan:2, dia:6, comida:'Libre',                                   cena:'Tartar de atún'},
   '2026-01-25': {gasto:1831.01, consumo:1506, deficit:-325.01,    plan:2, dia:7, comida:'Gnocchi con salmón',                     cena:'Libre'},
 
@@ -1576,12 +1695,12 @@ const datosExcel = {
   '2026-01-27': {gasto:1784.15, consumo:1758, deficit:-26.15,     plan:1, dia:2, comida:'Pasta con boloñesa',                     cena:'Ensalada XXL de langostinos'},
   '2026-01-28': {gasto:2329.35, consumo:1748, deficit:-581.35,    plan:1, dia:3, comida:'Crema de verduras + pescado azul',       cena:'Fajita boloñesa'},
   '2026-01-29': {gasto:2009.90, consumo:1557, deficit:-452.90,    plan:1, dia:4, comida:'Pollo en salsa curry de calabacín',      cena:'Crema de verduras completa'},
-  '2026-01-30': {gasto:2009.90, consumo:1433, deficit:-576.90,    plan:1, dia:5, comida:'Pavo salteado con calabacín y setas',    cena:'Revuelto de verduras'},
+  '2026-01-30': {gasto:2009.90, consumo:1433, deficit:-576.90,    plan:1, dia:5, comida:'Pavo salteado con calabacín y setas',    cena:'Revuelto de verduras',                   peso:81.1},
   '2026-01-31': {gasto:2103.34, consumo:1922.5, deficit:-180.84,  plan:1, dia:6, comida:'Libre',                                  cena:'Tostas completas'},
   '2026-02-01': {gasto:1662.63, consumo:2265, deficit:602.37,     plan:1, dia:7, comida:'Lubina con patata y calabacín',          cena:'Libre'},
 
   // SEMANA 02/02/26 — Plan 5
-  '2026-02-02': {gasto:1779.00, consumo:2051, deficit:272.00,     plan:5, dia:1, comida:'Guiso de garbanzos con calamares',       cena:'Ensalada César'},
+  '2026-02-02': {gasto:1779.00, consumo:2051, deficit:272.00,     plan:5, dia:1, comida:'Guiso de garbanzos con calamares',       cena:'Ensalada César',                         peso:81.3},
   '2026-02-03': {gasto:1765.00, consumo:1217, deficit:-548.00,    plan:5, dia:2, comida:'Verduras asadas + Pescado azul',         cena:'Sopa de pollo'},
   '2026-02-04': {gasto:1520.00, consumo:1546, deficit:26.00,      plan:5, dia:3, comida:'Pasta con verduras y gambas',            cena:'Revuelto de verduras asadas'},
   '2026-02-05': {gasto:2153.90, consumo:1540, deficit:-613.90,    plan:5, dia:4, comida:'Ensalada de patata completa',            cena:'Sopa de pollo (repetición)'},
@@ -1592,7 +1711,7 @@ const datosExcel = {
   // SEMANA 09/02/26 — Plan 6
   '2026-02-09': {gasto:2328.75, consumo:1458, deficit:-870.75,    plan:6, dia:1, comida:'Salteado col + Dorada',                  cena:'Crema verduras + jamón'},
   '2026-02-10': {gasto:1803.40, consumo:1636, deficit:-167.40,    plan:6, dia:2, comida:'Lasaña saludable calabacín y pollo',     cena:'Salteado col + huevo'},
-  '2026-02-11': {gasto:1800.70, consumo:1617, deficit:-183.70,    plan:6, dia:3, comida:'Garbanzos con pisto + melva',            cena:'Crema verduras + queso feta'},
+  '2026-02-11': {gasto:1800.70, consumo:1617, deficit:-183.70,    plan:6, dia:3, comida:'Garbanzos con pisto + melva',            cena:'Crema verduras + queso feta',            peso:80.7},
   '2026-02-12': {gasto:2157.50, consumo:1574, deficit:-583.50,    plan:6, dia:4, comida:'Lasaña calabacín (rep)',                 cena:'Pisto con huevo (rep)'},
   '2026-02-13': {gasto:2045.00, consumo:2608, deficit:563.00,     plan:6, dia:5, comida:'Salmón cherry, calabacín y queso',      cena:'Ensalada XXL'},
   '2026-02-14': {gasto:1548.00, consumo:1425, deficit:-123.00,    plan:6, dia:6, comida:'Libre',                                  cena:'Rollitos vietnamitas'},
@@ -1602,7 +1721,7 @@ const datosExcel = {
   '2026-02-16': {gasto:1842.00, consumo:1539, deficit:-303.00,    plan:5, dia:3, comida:'Pasta con verduras y gambas',            cena:'Revuelto de verduras asadas'},
   '2026-02-17': {gasto:1802.28, consumo:1801, deficit:-1.28,      plan:5, dia:1, comida:'Guiso de garbanzos con calamares',       cena:'Ensalada César'},
   '2026-02-18': {gasto:2041.50, consumo:1404, deficit:-637.50,    plan:5, dia:2, comida:'Verduras asadas + Pescado azul',         cena:'Sopa de pollo'},
-  '2026-02-19': {gasto:1807.00, consumo:1955, deficit:148.00,     plan:5, dia:5, comida:'Pollo con zanahoria y cebolla',          cena:'Filetes lomo + pimientos y queso'},
+  '2026-02-19': {gasto:1807.00, consumo:1955, deficit:148.00,     plan:5, dia:5, comida:'Pollo con zanahoria y cebolla',          cena:'Filetes lomo + pimientos y queso',       peso:79.7},
   '2026-02-20': {gasto:1730.00, consumo:2901, deficit:1171.00,    plan:5, dia:7, comida:'Lubina con patata y calabacín',          cena:'Libre'},
   '2026-02-21': {gasto:1527.00, consumo:2245, deficit:718.00,     plan:2, dia:6, comida:'Libre',                                  cena:'Tartar de atún'},
   '2026-02-22': {gasto:1583.00, consumo:1997, deficit:414.00,     plan:2, dia:7, comida:'Gnocchi con salmón',                    cena:'Libre'},
@@ -1612,9 +1731,9 @@ const datosExcel = {
   '2026-02-24': {gasto:1765.00, consumo:2328, deficit:563.00,     plan:7, dia:2, comida:'Pasta integral cherry, feta y salmón',  cena:'Calamares/pulpo + tomate aliñado'},
   '2026-02-25': {gasto:2290.00, consumo:1682, deficit:-608.00,    plan:7, dia:3, comida:'Guiso de lentejas con verduras',         cena:'Sopa de col (repetición)'},
   '2026-02-26': {gasto:2267.50, consumo:1578, deficit:-689.50,    plan:7, dia:4, comida:'Pescado blanco al horno con verduras',   cena:'Tostas de caballa y aguacate'},
-  '2026-02-27': {gasto:1968.00, consumo:3098, deficit:1130.00,    plan:7, dia:5, comida:'Ensalada templada pollo y quinoa',      cena:'Tortilla francesa con queso'},
+  '2026-02-27': {gasto:1968.00, consumo:3098, deficit:1130.00,    plan:7, dia:5, comida:'Ensalada templada pollo y quinoa',      cena:'Tortilla francesa con queso',            peso:79.7},
   '2026-02-28': {gasto:2185.00, consumo:3000, deficit:815.00,     plan:7, dia:6, comida:'Libre',                                  cena:'Pizza carbonara saludable'},
-  '2026-03-01': {gasto:1800.00, consumo:2210, deficit:410.00,     plan:7, dia:7, comida:'Albóndigas pollo + arroz basmati',      cena:'Libre'},
+  '2026-03-01': {gasto:1800.00, consumo:2210, deficit:410.00,     plan:7, dia:7, comida:'Albóndigas pollo + arroz basmati',      cena:'Libre',                                  peso:80.1},
 
   // SEMANA 02/03/26 — Plan 2
   '2026-03-02': {gasto:2329.10, consumo:1623, deficit:-706.10,    plan:2, dia:1, comida:'Pasta con pollo, verduras y queso',      cena:'Fajita completa'},
@@ -1652,6 +1771,7 @@ function registrosIniciales() {
     gastoReal: d.gasto,
     consumoReal: d.consumo,
     deficitReal: d.deficit,
+    peso: d.peso || null,
     pasos: 0,
     gym: 0,
     extras: 0,
@@ -1668,6 +1788,14 @@ async function loadData() {
   }
   if (!trackerData.registros || trackerData.registros.length === 0) {
     trackerData.registros = registrosIniciales();
+  } else {
+    // Parchar pesos históricos que falten en registros existentes
+    trackerData.registros.forEach(r => {
+      if ((r.peso == null || r.peso === 0) && datosExcel[r.fecha]?.peso) {
+        r.peso = datosExcel[r.fecha].peso;
+      }
+    });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(trackerData));
   }
 
   // 2. Intentar sincronizar con Supabase en background
@@ -1689,6 +1817,12 @@ async function loadData() {
         else trackerData.registros.push(datos);
       });
       trackerData.registros.sort((a,b) => a.fecha.localeCompare(b.fecha));
+      // Parchar pesos históricos que falten en datos de Supabase
+      trackerData.registros.forEach(r => {
+        if ((r.peso == null || r.peso === 0) && datosExcel[r.fecha]?.peso) {
+          r.peso = datosExcel[r.fecha].peso;
+        }
+      });
       localStorage.setItem(STORAGE_KEY, JSON.stringify(trackerData));
     } else {
       // Supabase vacío → subir los datos locales iniciales
@@ -1707,6 +1841,7 @@ async function loadData() {
   actualizarHistorial();
   actualizarVistaSemanal(weekOffset || 0);
   actualizarVistaMensual(monthOffset || 0);
+  renderPesoGlobal();
 }
 
 // ── GUARDAR: localStorage siempre, Supabase si hay conexión ──
@@ -2064,6 +2199,47 @@ function actualizarVistaMensual(offset=0) {
     if (r) monthRegs.push(r);
   }
   renderWeightChart('weightChartMensual', monthRegs);
+
+  // ── Predicción basada en tendencia de déficit ──
+  const prediccionEl = document.getElementById('prediccionTexto');
+  if (prediccionEl) {
+    const todosRegs = trackerData.registros.filter(r => r.deficitReal != null);
+    const deficitMedioDiario = todosRegs.length > 0
+      ? todosRegs.reduce((s,r) => s + r.deficitReal, 0) / todosRegs.length
+      : 0;
+    const deficitSemanal = deficitMedioDiario * 7;
+
+    // Peso actual: objetivo guardado > último peso registrado > null
+    const obj = cargarObjetivo();
+    const regsConPeso = trackerData.registros
+      .filter(r => r.peso != null && r.peso > 0)
+      .sort((a,b) => a.fecha.localeCompare(b.fecha));
+    const ultimoPesoReg = regsConPeso.length > 0 ? regsConPeso[regsConPeso.length-1].peso : null;
+    const pesoActual = obj.actual || ultimoPesoReg;
+    const pesoObjetivo = obj.objetivo || null;
+
+    const kgMes = Math.abs(deficitSemanal * 4.33 / 7700).toFixed(2);
+    const defMedio = Math.abs(Math.round(deficitMedioDiario));
+
+    let texto = '';
+    if (deficitSemanal < 0 && pesoActual && pesoObjetivo) {
+      const kgRestantes = Math.max(0, pesoActual - pesoObjetivo);
+      const semanasRestantes = Math.round((kgRestantes * 7700) / Math.abs(deficitSemanal));
+      const fechaETA = new Date();
+      fechaETA.setDate(fechaETA.getDate() + semanasRestantes * 7);
+      const fechaStr = fechaETA.toLocaleDateString('es-ES', {month:'long', year:'numeric'});
+      const mesesRestantes = (semanasRestantes / 4.33).toFixed(1);
+      texto = `A tu ritmo de <strong>${defMedio} kcal/día de déficit</strong> pierdes ~<em>${kgMes} kg/mes</em>. Quedan <strong>${kgRestantes.toFixed(1)} kg</strong> → objetivo en <em>~${mesesRestantes} meses</em> (<strong>${fechaStr}</strong>).`;
+    } else if (deficitSemanal < 0 && pesoActual) {
+      // Tiene déficit y peso pero no objetivo → mostrar ritmo igualmente
+      texto = `A tu ritmo de <strong>${defMedio} kcal/día de déficit</strong> pierdes ~<em>${kgMes} kg/mes</em>. Peso actual: <strong>${pesoActual} kg</strong>. Define tu peso objetivo en el Diario para ver la fecha estimada.`;
+    } else if (deficitSemanal >= 0) {
+      texto = `Tu media es de <strong>+${Math.round(deficitMedioDiario)} kcal/día de superávit</strong>. Reduce el consumo o aumenta actividad para retomar el déficit.`;
+    } else {
+      texto = `Registra días con calorías para calcular la predicción.`;
+    }
+    prediccionEl.innerHTML = texto;
+  }
 }
 
 // ==================== HISTORIAL ====================
@@ -2120,8 +2296,7 @@ function renderWeightChart(containerId, registros) {
   const container = document.getElementById(containerId);
   if (!container) return;
 
-  // Filter registros with peso data
-  const pts = registros
+  const pts = [...registros]
     .filter(r => r.peso != null && r.peso > 0)
     .sort((a,b) => a.fecha.localeCompare(b.fecha));
 
@@ -2130,95 +2305,105 @@ function renderWeightChart(containerId, registros) {
     return;
   }
 
-  const W = container.clientWidth || 320;
-  const H = 140;
-  const padL = 42, padR = 14, padT = 18, padB = 28;
-  const cW = W - padL - padR;
-  const cH = H - padT - padB;
+  // ViewBox fijo — el SVG se escala respetando proporciones, sin deformar
+  const VW = 700, VH = 200;
+  const pL = 52, pR = 18, pT = 22, pB = 38;
+  const cW = VW - pL - pR;
+  const cH = VH - pT - pB;
+  const n = pts.length;
 
   const weights = pts.map(p => p.peso);
-  const minW = Math.min(...weights);
-  const maxW = Math.max(...weights);
-  const range = maxW - minW || 1;
+  const rawMin = Math.min(...weights);
+  const rawMax = Math.max(...weights);
+  const pad = Math.max((rawMax - rawMin) * 0.3, 0.4);
+  const minW = rawMin - pad, maxW = rawMax + pad;
+  const range = maxW - minW;
 
-  // Linear regression for trend line
-  const n = pts.length;
-  const xs = pts.map((_,i) => i);
-  const meanX = xs.reduce((a,b)=>a+b,0)/n;
-  const meanY = weights.reduce((a,b)=>a+b,0)/n;
-  const slope = xs.reduce((sum,x,i)=>sum+(x-meanX)*(weights[i]-meanY),0) /
-                xs.reduce((sum,x)=>sum+(x-meanX)**2, 0.0001);
-  const intercept = meanY - slope * meanX;
+  const xp = i => pL + (n === 1 ? cW / 2 : (i / (n - 1)) * cW);
+  const yp = w => pT + cH - ((w - minW) / range) * cH;
 
-  function px(i) { return padL + (n===1 ? cW/2 : (i/(n-1))*cW); }
-  function py(w) { return padT + cH - ((w-minW)/range)*cH; }
+  // Regresión lineal
+  const meanX = (n - 1) / 2;
+  const meanY = weights.reduce((a,b) => a+b, 0) / n;
+  const slope = weights.reduce((s,w,i) => s + (i-meanX)*(w-meanY), 0) /
+                weights.reduce((s,_,i) => s + (i-meanX)**2, 1e-6);
+  const icp = meanY - slope * meanX;
 
-  // Build SVG
-  let path = '', dots = '', labels = '', trendPath = '';
-
-  // Trend line
-  const ty0 = intercept;
-  const ty1 = slope*(n-1) + intercept;
-  const tx0 = px(0), tx1 = px(n-1);
-  const tpy0 = padT + cH - ((ty0-minW)/range)*cH;
-  const tpy1 = padT + cH - ((ty1-minW)/range)*cH;
-  trendPath = `<line x1="${tx0}" y1="${tpy0}" x2="${tx1}" y2="${tpy1}"
-    stroke="rgba(255,200,100,0.5)" stroke-width="1.5" stroke-dasharray="5,3"/>`;
-
+  // Línea suavizada
+  let line = '';
   pts.forEach((p, i) => {
-    const x = px(i), y = py(p.peso);
-    if (i===0) path += `M ${x} ${y}`;
-    else {
-      const px1 = px(i-1), py1 = py(pts[i-1].peso);
-      const cpx = (px1+x)/2;
-      path += ` C ${cpx} ${py1}, ${cpx} ${y}, ${x} ${y}`;
-    }
-    dots += `<circle cx="${x}" cy="${y}" r="4" fill="rgba(180,155,255,0.9)"
-      stroke="rgba(127,201,255,0.6)" stroke-width="1.5">
-      <title>${p.peso} kg · ${p.fecha}</title>
-    </circle>`;
-    // Only show label for first, last, and every 4th point
-    if (i===0 || i===n-1 || i%4===0) {
-      const lblY = y > padT+16 ? y-10 : y+18;
-      labels += `<text x="${x}" y="${lblY}" text-anchor="middle"
-        font-family="Cinzel,serif" font-size="10" fill="rgba(220,210,255,0.85)">${p.peso}</text>`;
-    }
-    // X-axis date label (day number only)
-    const day = p.fecha.split('-')[2];
-    if (i===0 || i===n-1 || n<=7 || i%Math.ceil(n/6)===0) {
-      labels += `<text x="${x}" y="${H-4}" text-anchor="middle"
-        font-family="Cinzel,serif" font-size="9" fill="rgba(180,160,255,0.6)">${day}</text>`;
+    const x = xp(i), y = yp(p.peso);
+    if (i === 0) { line += `M${x},${y}`; return; }
+    const cx = (xp(i-1) + x) / 2;
+    line += ` C${cx},${yp(pts[i-1].peso)} ${cx},${y} ${x},${y}`;
+  });
+
+  // Área
+  const area = line + ` L${xp(n-1)},${pT+cH} L${xp(0)},${pT+cH}Z`;
+
+  // Tendencia
+  const trend = `<line x1="${xp(0)}" y1="${yp(icp)}" x2="${xp(n-1)}" y2="${yp(slope*(n-1)+icp)}"
+    stroke="rgba(255,200,100,0.5)" stroke-width="1.5" stroke-dasharray="6,4"/>`;
+
+  // Puntos
+  let dots = '';
+  pts.forEach((p, i) => {
+    dots += `<circle cx="${xp(i)}" cy="${yp(p.peso)}" r="4.5"
+      fill="rgba(180,155,255,0.95)" stroke="rgba(127,201,255,0.7)" stroke-width="1.5">
+      <title>${p.peso} kg · ${p.fecha}</title></circle>`;
+  });
+
+  // Etiquetas de peso (primero, último y cada ~4)
+  let pesoLbls = '';
+  pts.forEach((p, i) => {
+    if (i === 0 || i === n-1 || i % Math.max(1, Math.floor(n/5)) === 0) {
+      const x = xp(i), y = yp(p.peso);
+      const ly = y > pT + 18 ? y - 10 : y + 18;
+      pesoLbls += `<text x="${x}" y="${ly}" text-anchor="middle"
+        font-size="11" font-family="Cinzel,serif" fill="rgba(230,215,255,0.9)">${p.peso}</text>`;
     }
   });
 
-  // Y axis labels
-  const yLabels = [minW, (minW+maxW)/2, maxW].map(w =>
-    `<text x="${padL-6}" y="${py(w)+4}" text-anchor="end"
-      font-family="Cinzel,serif" font-size="9" fill="rgba(180,160,255,0.6)">${w.toFixed(1)}</text>`
-  ).join('');
+  // Etiquetas de fecha (eje X): día/mes
+  let fechaLbls = '';
+  const meses = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  pts.forEach((p, i) => {
+    if (i === 0 || i === n-1 || i % Math.max(1, Math.floor(n/5)) === 0) {
+      const [,m,d] = p.fecha.split('-');
+      fechaLbls += `<text x="${xp(i)}" y="${VH - 6}" text-anchor="middle"
+        font-size="10" font-family="Cinzel,serif" fill="rgba(180,160,255,0.65)">${parseInt(d)}/${meses[parseInt(m)-1]}</text>`;
+    }
+  });
 
-  // Area fill
-  const areaPath = path + ` L ${px(n-1)} ${padT+cH} L ${px(0)} ${padT+cH} Z`;
+  // Eje Y (3 valores)
+  let yLbls = '';
+  [rawMin, (rawMin+rawMax)/2, rawMax].forEach(w => {
+    yLbls += `<text x="${pL-6}" y="${yp(w)+4}" text-anchor="end"
+      font-size="10" font-family="Cinzel,serif" fill="rgba(180,160,255,0.65)">${w.toFixed(1)}</text>`;
+  });
+
+  // Línea base eje X
+  const baseline = `<line x1="${pL}" y1="${pT+cH}" x2="${pL+cW}" y2="${pT+cH}"
+    stroke="rgba(160,220,255,0.1)" stroke-width="1"/>`;
 
   container.innerHTML = `
-    <svg class="weight-svg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">
+    <svg viewBox="0 0 ${VW} ${VH}" preserveAspectRatio="xMidYMid meet"
+      style="width:100%;height:auto;display:block;overflow:visible;">
       <defs>
-        <linearGradient id="wGrad_${containerId}" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="rgba(168,130,255,0.35)"/>
-          <stop offset="100%" stop-color="rgba(127,201,255,0.04)"/>
+        <linearGradient id="wg_${containerId}" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="rgba(168,130,255,0.3)"/>
+          <stop offset="100%" stop-color="rgba(127,201,255,0.02)"/>
         </linearGradient>
-        <filter id="wGlow_${containerId}">
-          <feGaussianBlur stdDeviation="2" result="blur"/>
-          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
       </defs>
-      <path d="${areaPath}" fill="url(#wGrad_${containerId})"/>
-      ${trendPath}
-      <path d="${path}" fill="none" stroke="rgba(180,155,255,0.85)" stroke-width="2.2"
-        stroke-linecap="round" stroke-linejoin="round" filter="url(#wGlow_${containerId})"/>
+      ${baseline}
+      <path d="${area}" fill="url(#wg_${containerId})"/>
+      ${trend}
+      <path d="${line}" fill="none" stroke="rgba(180,155,255,0.9)" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round"/>
       ${dots}
-      ${yLabels}
-      ${labels}
+      ${yLbls}
+      ${pesoLbls}
+      ${fechaLbls}
     </svg>`;
 }
 
@@ -2411,6 +2596,7 @@ let weekOffset=0, monthOffset=0;
     actualizarVistaSemanal(weekOffset);
     actualizarVistaMensual(monthOffset);
     actualizarRacha();
+    renderPesoGlobal();
   });
 
   document.getElementById('resetDiaBtn').addEventListener('click', () => {
@@ -2539,6 +2725,14 @@ let weekOffset=0, monthOffset=0;
 
 })();
 
+function renderPesoGlobal() {
+  // Todos los registros con peso, ordenados por fecha
+  const regsConPeso = [...trackerData.registros]
+    .filter(r => r.peso != null && r.peso > 0)
+    .sort((a,b) => a.fecha.localeCompare(b.fecha));
+  renderWeightChart('pesoDiarioChart', regsConPeso);
+}
+
 // ==================== RACHA DE DÍAS ====================
 function calcularRacha() {
   const hoy = new Date();
@@ -2573,59 +2767,64 @@ function cargarObjetivo() {
 
 function actualizarObjetivoUI() {
   const obj = cargarObjetivo();
-  if (!obj.actual || !obj.objetivo) return;
 
-  // Rellenar inputs
+  // Peso actual: objetivo guardado > último peso registrado
+  const regsConPeso = trackerData.registros
+    .filter(r => r.peso != null && r.peso > 0)
+    .sort((a,b) => a.fecha.localeCompare(b.fecha));
+  const ultimoPeso = regsConPeso.length > 0 ? regsConPeso[regsConPeso.length-1].peso : null;
+
+  const pesoActual  = obj.actual    || ultimoPeso;
+  const pesoObj     = obj.objetivo  || null;
+  const pesoInicio  = obj.inicio    || pesoActual;
+
+  // Rellenar inputs si están vacíos
   const inputActual = document.getElementById('pesoActualInput');
-  const inputObj = document.getElementById('pesoObjetivoInput');
-  if (inputActual && !inputActual.value) inputActual.value = obj.actual;
-  if (inputObj && !inputObj.value) inputObj.value = obj.objetivo;
+  const inputObj2   = document.getElementById('pesoObjetivoInput');
+  if (inputActual && !inputActual.value && pesoActual) inputActual.value = pesoActual;
+  if (inputObj2   && !inputObj2.value   && pesoObj)    inputObj2.value   = pesoObj;
 
-  const pesoActual = obj.actual;
-  const pesoObj = obj.objetivo;
-  const pesoInicio = obj.inicio || pesoActual;
+  // Déficit medio diario de todos los registros
+  const todosRegs = trackerData.registros.filter(r => r.deficitReal != null);
+  const deficitMedioDiario = todosRegs.length > 0
+    ? todosRegs.reduce((s,r) => s + r.deficitReal, 0) / todosRegs.length : 0;
+  const deficitSemanal = deficitMedioDiario * 7;
 
-  // Déficit semanal promedio de últimas 4 semanas
-  const hoy = new Date();
-  const hace4s = new Date(hoy); hace4s.setDate(hoy.getDate() - 28);
-  const hace4sISO = hace4s.toISOString().split('T')[0];
-  const recsRecientes = trackerData.registros.filter(r => r.fecha >= hace4sISO && r.deficitReal != null);
-  const deficitMedioSemanal = recsRecientes.length > 0
-    ? (recsRecientes.reduce((s, r) => s + r.deficitReal, 0) / recsRecientes.length) * 7
-    : 0;
-
-  const kgRestantes = pesoActual - pesoObj;
-  const kgPerdidos = pesoInicio - pesoActual;
-  const totalKg = pesoInicio - pesoObj;
-  const progreso = totalKg > 0 ? Math.max(0, Math.min(100, (kgPerdidos / totalKg) * 100)) : 0;
-
-  // Semanas restantes (7700 kcal = 1 kg)
-  let etaTexto = '';
-  if (deficitMedioSemanal < 0 && kgRestantes > 0) {
-    const semanasRestantes = Math.round((kgRestantes * 7700) / Math.abs(deficitMedioSemanal));
-    const fechaETA = new Date(hoy); fechaETA.setDate(hoy.getDate() + semanasRestantes * 7);
-    etaTexto = `★ ${kgRestantes.toFixed(1)} kg hasta el objetivo · ~${semanasRestantes} semanas · ${fechaETA.toLocaleDateString('es-ES',{month:'long',year:'numeric'})}`;
-  } else if (kgRestantes <= 0) {
-    etaTexto = '★ ¡Objetivo alcanzado! 🎉';
-  } else {
-    etaTexto = `★ ${kgRestantes.toFixed(1)} kg hasta el objetivo · registra más días para calcular ETA`;
+  // Barra de progreso
+  let progreso = 0;
+  if (pesoActual && pesoObj && pesoInicio) {
+    const kgPerdidos = pesoInicio - pesoActual;
+    const totalKg    = pesoInicio - pesoObj;
+    progreso = totalKg > 0 ? Math.max(0, Math.min(100, (kgPerdidos / totalKg) * 100)) : 0;
   }
-
   ['objetivoFill','objetivoFill2'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.style.width = progreso + '%';
   });
+
+  // Texto ETA
+  let etaTexto = '';
+  if (pesoActual && pesoObj && deficitSemanal < 0) {
+    const kgRestantes = Math.max(0, pesoActual - pesoObj);
+    const semanasRestantes = Math.round((kgRestantes * 7700) / Math.abs(deficitSemanal));
+    const fechaETA = new Date();
+    fechaETA.setDate(fechaETA.getDate() + semanasRestantes * 7);
+    const fechaStr = fechaETA.toLocaleDateString('es-ES', {month:'long', year:'numeric'});
+    etaTexto = kgRestantes <= 0
+      ? '★ ¡Objetivo alcanzado!'
+      : `★ ${kgRestantes.toFixed(1)} kg restantes · ~${semanasRestantes} semanas · ${fechaStr}`;
+  } else if (pesoActual && !pesoObj) {
+    etaTexto = `★ Peso actual: ${pesoActual} kg · Define un objetivo para ver la ETA`;
+  } else if (!pesoActual) {
+    etaTexto = `★ Anota tu peso en el Diario para activar el seguimiento`;
+  }
   ['objetivoEta','objetivoEta2'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.textContent = etaTexto;
   });
 
-  // Mini gráfica peso en diario
-  const regsConPeso = [...trackerData.registros]
-    .filter(r => r.peso && r.peso > 0)
-    .sort((a,b) => a.fecha.localeCompare(b.fecha))
-    .slice(-20); // últimos 20 registros con peso
-  renderWeightChart('pesoDiarioChart', regsConPeso);
+  // Gráfica de peso global
+  renderPesoGlobal();
 }
 
 // ==================== EXPORTAR CSV ====================
